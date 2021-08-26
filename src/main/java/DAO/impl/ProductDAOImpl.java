@@ -13,10 +13,7 @@ import java.util.List;
 
 public class ProductDAOImpl implements ProductDAO {
 
-
     private final EntityManager entityManager;
-
-
 
     public ProductDAOImpl() {
         EntityManagerFactory factory = new Configuration()
@@ -41,7 +38,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public List<Product> findAll() {
-        Query query = entityManager.createQuery("select p from Product p",Product.class);
+        Query query = entityManager.createQuery("select p from Product p", Product.class);
         List<Product> products;
         try {
             products = (List<Product>) query.getResultList();
@@ -65,10 +62,10 @@ public class ProductDAOImpl implements ProductDAO {
         entityManager.getTransaction().begin();
         long id = -1;
         try {
-            if(product.getId()!=null)
-            findById(product.getId());
+            if (product.getId() != null)
+                findById(product.getId());
             Product merge = entityManager.merge(product);
-            id= merge.getId();
+            id = merge.getId();
         } catch (FindInDatabaseException exception) {
             entityManager.persist(product);
             entityManager.flush();
