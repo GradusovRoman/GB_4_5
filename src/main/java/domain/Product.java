@@ -1,11 +1,10 @@
 package domain;
 
-import org.hibernate.annotations.DynamicUpdate;
-
 import javax.persistence.*;
 
+
 @Entity
-@Table(name="product")
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +22,15 @@ public class Product {
         this.price = price;
     }
 
-    public Product(Long id,String title, int price) {
-        this.id=id;
+    public Product(Long id, String title, int price) {
+        this.id = id;
         this.title = title;
         this.price = price;
     }
 
-    public Product () {
+    public Product() {
     }
+
     public Long getId() {
         return id;
     }
